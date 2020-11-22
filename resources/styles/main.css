@@ -1,0 +1,56 @@
+.task-option{
+    margin-top: 25px;
+}
+
+.task-list{
+    margin: 25px 0;
+}
+
+.task-row{
+    display: flex;
+    padding: 15px 10px;
+}
+
+.task-row:nth-child(2n-1){
+    background-color: rgba(0,0,0,0.05);
+}
+
+
+.task-user{
+    font-weight: bold;
+    width: 150px;
+}
+
+.task-email{
+    width: 300px;
+}
+
+.task-text{
+    flex: 1 1
+}
+
+.task-status{
+    width: 150px;
+    text-align: center;
+}
+
+.task-status .badge-info{
+    margin-top: 8px;
+}
+
+.task-edit{
+    width: 50px;
+    text-align: center;
+}
+
+h3{
+    margin: 25px 0;
+}
+
+.login-wrapper{
+    margin-top: 10rem;
+}
+
+.login-wrapper h4{
+    margin-bottom: 20px;
+}

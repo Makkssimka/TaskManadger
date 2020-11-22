@@ -1,0 +1,17 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a href="#" class="navbar-brand">Task List</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Список заданий</a>
+            </li>
+        </ul>
+        <span class="navbar-login">
+            {% if isLogin %}
+            <a class="btn btn-primary" href="/logout" role="button">Выйти</a>
+            {% else %}
+            <a class="btn btn-primary" href="/login" role="button">Войти</a>
+            {% endif %}
+        </span>
+    </div>
+</nav>

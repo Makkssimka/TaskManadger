@@ -1,0 +1,67 @@
+{% extends "site/layout.html" %}
+
+{% block content %}
+<div class="content">
+    <div class="container">
+        <div class="task-option d-flex flex-row justify-content-between">
+            <div class="task-add">
+                <a href="/add-task" class="btn btn-success">Добавить</a>
+            </div>
+            <div class="task-sort">
+                <form action="" method="get" class="form-inline">
+                    <select id="sort" class="form-control" name="sort">
+                        <option value="" disabled {{ sort==''?'selected':'' }}>Отсортировать</option>
+                        <option value="nameUp" {{ sort=='nameUp'?'selected':''}}>Имя по возрастанию</option>
+                        <option value="nameDown" {{ sort=='nameDown'?'selected':''}}>Имя по убыванию</option>
+                        <option value="emailUp" {{ sort=='emailUp'?'selected':''}}>Email по возрастанию</option>
+                        <option value="emailDown" {{ sort=='emailDown'?'selected':''}}>Email по убыванию</option>
+                        <option value="check" {{ sort=='check'?'selected':''}}>Задание выполнено</option>
+                        <option value="noCheck {{ sort=='noCheck'?'selected':''}}">Зание выполняется</option>
+                    </select>
+                    <input type="hidden" name="page" value="{{ page }}">
+                </form>
+            </div>
+        </div>
+        <div class="task-list">
+            {% for task in tasks %}
+            <div class="task-row">
+                <div class="task-user">{{ task.name }}</div>
+                <div class="task-email">{{ task.email }}</div>
+                {% autoescape false %}
+                <div class="task-text">{{ task.text }}</div>
+                {% endautoescape %}
+                <div class="task-status">
+                    {% if task.status %}
+                    <span class="badge badge-success">выполнено</span>
+                    {% else %}
+                    <span class="badge badge-warning">выполняется</span>
+                    {% endif %}
+                    {% if task.edit %}
+                    <span class="badge badge-info">отредактировано <br> администратором</span>
+                    {% endif %}
+                </div>
+                {% if isLogin %}
+                <div class="task-edit">
+                    <a href="/edit/{{ task.id }}" type="button" class="btn btn-success btn-sm"><i class="las la-pen-nib"></i></a>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if count!=1 %}
+        <div class="task-pagination">
+            <ul class="pagination justify-content-center">
+                {% for index in 1..count %}
+                    {% if index==page %}
+                    <li class="page-item active" aria-current="page"><span class="page-link">{{ index }}</span></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="/?{{ sortPath }}page={{ index }}">{{ index }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

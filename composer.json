@@ -1,0 +1,21 @@
+{
+    "name": "maksimzukovic/resume",
+    "description": "Testig task",
+    "authors": [
+        {
+            "name": "Makkssimka",
+            "email": "swoisait@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core",
+            "Controller\\": "controller",
+            "Models\\": "models"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.1",
+        "illuminate/database": "^8.15"
+    }
+}
